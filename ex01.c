@@ -21,11 +21,11 @@ int main(){
     printf("Media %.2lf\n", media);
     for(e = 0; e< a; e++){
         b += pow((ar[e]-media),2); 
-        printf("%lf\n", b);    
+          
     }
     
     desvio = sqrt(b/a);
-    printf("%lf", desvio);
+    printf("Desvio %lf", desvio);
     
     
 
