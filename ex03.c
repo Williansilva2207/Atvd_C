@@ -23,3 +23,14 @@ int main(){
     printf("]\n");
     return 0; 
 }
+
+void impirmirvetor(int v[], int n){
+    printf("[");
+    if (n>0){
+        printf("%d", v[0]);
+        for(unsigned int i = 1; i < n; ++i){
+            printf(", %d", v[i] );
+        }
+    }
+    printf("]");
+}
