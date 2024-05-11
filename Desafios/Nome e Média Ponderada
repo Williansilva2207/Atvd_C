@@ -1,0 +1,67 @@
+#include <stdio.h>
+#include <string.h>
+#define TAM_VET 20
+void digitarNomes(char nomes[][TAM_VET]);
+void mostrarNomes(char nomes[][TAM_VET]);
+void digitarNotas(char nomes[][TAM_VET], double notas[], double notas2[]);
+void mostrarMedia(char nomes[][TAM_VET], double notas[], double notas2[], int pesos[]);
+int main()
+{
+    char nomes[TAM_VET][TAM_VET];
+    double notas[TAM_VET], notas2[TAM_VET];
+    int pesos[2] = {2,3};
+    digitarNomes(nomes);
+    printf("\n");
+    mostrarNomes(nomes);
+    printf("\n");
+    digitarNotas(nomes,notas,notas2);
+    printf("\n");
+    mostrarMedia(nomes, notas,  notas2, pesos);
+    return 0;
+}
+
+void digitarNomes(char nomes[][TAM_VET]){
+    
+    for(int i = 0; i < TAM_VET; i++){
+        printf("Digite o nome do %d°:\n", i+1);
+        fgets(nomes[i], TAM_VET, stdin);
+        int tam = strlen(nomes[i]);
+        if(nomes[i][tam-1]=='\n'){
+            nomes[i][tam-1] = '\0';
+        }
+    }
+    
+}
+
+void mostrarNomes(char nomes[][TAM_VET]){
+    for(int i = 0; i < TAM_VET; i++){
+        printf("O nome do caba é %s\n", nomes[i]);
+    }
+}
+
+void digitarNotas(char nomes[][TAM_VET], double notas[], double notas2[]){
+    for(int i = 0; i < TAM_VET; i++){   
+        printf("Digite a primeira nota do(a) aluno(a) %s:\n", nomes[i]);
+        scanf("%lf", &notas[i]);
+    }
+    printf("\n");
+    for(int i = 0; i < TAM_VET; i++){   
+        printf("Digite a segunda nota do(a) aluno(a) %s:\n", nomes[i]);
+        scanf("%lf", &notas2[i]);
+    }
+    
+}
+
+void mostrarMedia(char nomes[][TAM_VET], double notas[], double notas2[], int pesos[]){
+    for(int i = 0; i < TAM_VET; i++){
+        if((((notas[i]*pesos[0])+(notas2[i]*pesos[1]))/5) < 7){
+            
+            printf("O aluno %s obteve a média %.2lf e foi reprovado.", nomes[i], (((notas[i]*pesos[0])+(notas2[i]*pesos[1]))/5));
+            
+        }
+        else{
+            printf("O aluno %s obteve a média %.2lf e foi aprovado.", nomes[i], (((notas[i]*pesos[0])+(notas2[i]*pesos[1]))/5));
+        }
+        printf("\n");
+    }
+}
